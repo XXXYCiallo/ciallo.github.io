@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time</title>
+<style>
+  body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    font-family: 'Arial', sans-serif;
+  }
+  #time {
+    font-size: 7vw; /* 根据屏幕宽度设置字体大小 */
+    font-weight: bold;
+    white-space: pre; /* 保留换行 */
+  }
+</style>
+</head>
+<body>
+<div id="time">Date:2024-6-20
+Time:10:20:10 AM</div>
+<script>
+  function updateTime() {
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = (now.getMonth() + 1).toString().padStart(2, '0');
+    var day = now.getDate().toString().padStart(2, '0');
+    var hours = now.getHours().toString().padStart(2, '0');
+    var minutes = now.getMinutes().toString().padStart(2, '0');
+    var seconds = now.getSeconds().toString().padStart(2, '0');
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    document.getElementById('time').textContent = 
+      'Date:' + year + '-' + month + '-' + day + '\n' +
+      'Time:' + hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+  }
+  setInterval(updateTime, 500); // 0.5秒更新一次时间
+  updateTime(); // 初始化时间显示
+</script>
+</body>
+</html>
